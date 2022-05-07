@@ -240,4 +240,7 @@ addManager()
     .then(addEngineerIntern)
     .then(teamMemberData => {
         return generatePage(teamMemberData);
+    })
+    .catch(err => {
+        console.log(err);
     });
