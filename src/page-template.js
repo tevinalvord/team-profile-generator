@@ -22,12 +22,12 @@ function generateManager(manager) {
 
 // create engineer section
 function generateEngineer(engineer) {
-    return manager.map(({ name, id, email, github }) => {
+    return engineer.map(({ name, id, email, github }) => {
         return `
             <div class="">
                 <div>
                     <h1>${name}</h1>
-                    <h1>Manager</h1>
+                    <h1>Engineer</h1>
                 </div>
                 <div>
                     <ul>
@@ -44,12 +44,12 @@ function generateEngineer(engineer) {
 
 // create intern section
 function generateIntern(intern) {
-    return manager.map(({ name, id, email, school }) => {
+    return intern.map(({ name, id, email, school }) => {
         return `
             <div class="">
                 <div>
                     <h1>${name}</h1>
-                    <h1>Manager</h1>
+                    <h1>Intern</h1>
                 </div>
                 <div>
                     <ul>
