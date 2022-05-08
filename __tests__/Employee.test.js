@@ -1,7 +1,7 @@
 const Employee = require('../lib/Employee');
 
 test('creates an employee object', () => {
-    const employee = new Employee('Tevin', 'tevin.alvord@gmail.com');
+    const employee = new Employee('Tevin', 1, 'tevin.alvord@gmail.com');
 
     expect(employee.name).toBe('Tevin');
     expect(employee.id).toBe(1);
@@ -15,13 +15,13 @@ test("gets employee's name", () => {
 });
 
 test("gets employee's id", () => {
-    const employee = new Employee('Tevin');
+    const employee = new Employee('Tevin', 1);
     
     expect(employee.getId()).toBe(1);
 });
 
 test("gets employee's email", () => {
-    const employee = new Employee('Tevin', 'tevin.alvord@gmail.com');
+    const employee = new Employee('Tevin', 1, 'tevin.alvord@gmail.com');
     
     expect(employee.getEmail()).toBe('tevin.alvord@gmail.com');
 });

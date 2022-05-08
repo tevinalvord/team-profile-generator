@@ -1,48 +1,104 @@
-const Employee = require('../lib/Employee');
-const Manager = require('../lib/Manager');
-const Engineer = require('../lib/Engineer');
-const Intern = require('../lib/Intern');
-
-// const dataSent = dataSent;
-
-// let manager = new Manager('Tevin', 1, 'tevin.alvord@gmail.com', 1);
-// console.log(manager.getName());
-
-module.exports = teamMemberData => {
-    console.log(teamMemberData);
-    const { members, ...manager } = teamMemberData;
-
-    // return `
-    // <!DOCTYPE html> 
-    // <html lang="en"> 
-
-    // <head>
-    //     <meta charset="UTF-8">
-    //     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    //     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    //     <title>Portfolio Demo</title>
-    //     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-    //     <link href="https://fonts.googleapis.com/css?family=Public+Sans:300i,300,500&display=swap" rel="stylesheet">
-    //     <link rel="stylesheet" href="style.css">
-    // </head>
-
-    // <body>
-    //     <header>
-    //         <div class="container flex-row justify-space-between align-center py-3">
-    //             <h1 class="page-title text-secondary bg-dark py-2 px-3">${header.name}</h1>
-    //             <nav class="flex-row">
-    //                 <a class="m1-2 my-1 px-2 py-1 bg-secondary text-dark" href="http://github.com/${header.github}">Github</a>
-    //             </nav>
-    //         </div>
-    //     </header>
-    //     <main class="container my-5">
-    //         ${generateAbout(about)}
-    //         ${generateProjects(projects)}
-    //     </main>
-    //     <footer class="container text-center py-3">
-    //         <h3 class="text-dark">&copy; ${new Date().getFullYear()} by ${header.name}</h3>
-    //     </footer>
-    // </body>
-    // </html>
-    // `;
+// create manager section
+function generateManager(manager) {
+    return manager.map(({ name, id, email, officeNumber }) => {
+        return `
+            <div class="">
+                <div>
+                    <h1>${name}</h1>
+                    <h1>Manager</h1>
+                </div>
+                <div>
+                    <ul>
+                        <li>ID: ${id}</id>
+                        <li>Email: ${email}</li>
+                        <li>Office Number: ${officeNumber}</li>
+                    </ul>
+                </div>
+            </div>
+        `;
+    })
+        .join(' ');
 }
+
+// create engineer section
+function generateEngineer(engineer) {
+    return manager.map(({ name, id, email, github }) => {
+        return `
+            <div class="">
+                <div>
+                    <h1>${name}</h1>
+                    <h1>Manager</h1>
+                </div>
+                <div>
+                    <ul>
+                        <li>ID: ${id}</id>
+                        <li>Email: ${email}</li>
+                        <li>GitHub: ${github}</li>
+                    </ul>
+                </div>
+            </div>
+        `;
+    })
+        .join(' ');
+}
+
+// create intern section
+function generateIntern(intern) {
+    return manager.map(({ name, id, email, school }) => {
+        return `
+            <div class="">
+                <div>
+                    <h1>${name}</h1>
+                    <h1>Manager</h1>
+                </div>
+                <div>
+                    <ul>
+                        <li>ID: ${id}</id>
+                        <li>Email: ${email}</li>
+                        <li>School: ${school}</li>
+                    </ul>
+                </div>
+            </div>
+        `;
+    })
+        .join(' ');
+}
+
+
+// create HTML
+module.exports = team => {
+    console.log(team);
+
+    const manager = team.filter(({ officeNumber }) => officeNumber);
+    const engineer = team.filter(({ github }) => github);
+    const intern = team.filter(({ school }) => school);
+
+    return `
+    <!DOCTYPE html> 
+    <html lang="en"> 
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>My Team</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Public+Sans:300i,300,500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <header>
+            <div class="">
+                <h1 class="">Team</h1>
+            </div>
+        </header>
+        <main class="">
+            ${generateManager(manager)}
+            ${generateEngineer(engineer)}
+            ${generateIntern(intern)}
+        </main>
+    </body>
+    </html>
+    `;
+};
