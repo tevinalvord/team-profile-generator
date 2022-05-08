@@ -226,16 +226,20 @@ function addTeamMember() {
                         }
                     })
             } else {
-                // const fileContent = generatePage(team);
-
-                // writeContent(fileContent);
                 fs.writeFile('./dist/index.html', generatePage(team), (err) => {
                     if (err) {
                         console.log(err);
                     } else {
-                        console.log("File written successfully!");
+                        console.log("HTML file written successfully!");
                     }
-                })
+                });
+                fs.copyFile('./src/style.css', './dist/style.css', (err) => {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        console.log('CSS file copied successfully');
+                    }
+                });
             }
         })
 }
